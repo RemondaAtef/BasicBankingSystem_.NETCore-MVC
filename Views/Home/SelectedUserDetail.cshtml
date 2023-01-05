@@ -1,0 +1,106 @@
+﻿@model Basic_Banking_System.DAL.Entities.Customers
+
+<br />
+<br />
+<center>
+    <h1>@ViewBag.x</h1>
+</center>
+<br />
+<br />
+
+<table class="table table-striped table-bordered text-center">
+    <tr>
+        <th class="text-center">Account Number</th>
+        <th class="text-center">Name</th>
+        <th class="text-center">Email</th>
+        <th class="text-center">Current Balance</th>
+
+    </tr>
+
+    <tr>
+        <td senderid>@Model.Account_Num</td>
+        <td>@Model.Name</td>
+        <td>@Model.Email</td>
+        <td >@Model.Current_Balance</td>
+    </tr>
+
+</table>
+
+<br>
+<br>
+<br>
+<div class="row">
+    <div class="col-md-4">
+        <div class="form-group">
+            <label>Transfer To:</label>
+            <br />
+
+            @Html.DropDownListFor(
+            x => x.Current_Balance,
+            new SelectList(ViewBag.names, "Account_Num", "Name"),
+            new { @class = "form-control", @id = "Customers", @type = "text" }
+            )
+
+            <br />
+            <br />
+            <label>Amount:</label>
+
+            <input id="amount" type="number" class="form-control" name="amount" required>
+            <p id="jsontext" class="text-danger"></p>
+            <strong  id="successtransfer" style="color: #0008ff"></strong>
+            <br>
+            <div class="text-center">
+                <button class="btn mt-3" name="submit" type="submit" id="transfer" >Transfer</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+<script>
+   
+    $("#transfer").click(function () {
+        
+       // debugger;
+        var amount = document.getElementById('amount').value;
+      
+        var recivername = $("#Customers option:selected").text();
+
+        var senderid = "@Model.Account_Num";
+      
+         $("#jsontext").text('');
+        $("#successtransfer").text('');
+        $("#amount").val('');
+
+        $.ajax({
+        type: "POST",
+        url: "/Home/TransferMoney",
+            data: { senderid: senderid, amount: amount, recivername: recivername },
+
+            success: function (data) {
+
+                if (data == "Not valid ammount of money") {
+          
+                    document.getElementById("jsontext").innerHTML = data;
+         
+                 }
+                else if (data == "Not enough money in your account") {
+                    document.getElementById("jsontext").innerHTML = data;
+                   
+                }
+                else {
+                
+                document.getElementById("successtransfer").innerHTML = data;
+
+              }
+
+        },
+        error: function () {
+            alert("Error occured!!")
+        }
+    });
+
+    });
+        
+</script>

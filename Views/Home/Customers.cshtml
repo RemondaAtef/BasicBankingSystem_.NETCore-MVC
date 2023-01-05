@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Basic_Banking_System.DAL.Entities.Customers>
+
+<br/>
+<br/>
+<center>
+    <h1>@ViewBag.x</h1>
+</center>
+<br/>
+<br/>
+
+<table class="table table-striped table-bordered text-center">
+    <tr>
+        <th class="text-center">Account Number</th>
+        <th class="text-center">Name</th>
+        <th class="text-center">Email</th>
+        <th class="text-center">Current Balance</th>
+        <th class="text-center">Details</th>
+    </tr>
+
+            @foreach(var item in Model)
+            {
+<tr>
+    <td>@item.Account_Num</td>
+    <td>@item.Name</td>
+    <td>@item.Email</td>
+    <td>@item.Current_Balance</td>
+   
+    <td><a asp-controller="Home" asp-action="SelectedUserDetail" asp-route-id="@item.Account_Num" class="btn btn-success">Show Details/Transfer</a></td>
+</tr>
+            }
+
+</table>

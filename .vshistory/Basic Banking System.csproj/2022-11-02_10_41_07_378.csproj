@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>Basic_Banking_System</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="Services\.vshistory\NullMailService.cs\2022-11-01_12_51_17_632.cs" />
+    <Compile Include="Services\.vshistory\NullMailService.cs\2022-11-01_12_57_33_657.cs" />
+    <Compile Include="Services\.vshistory\NullMailService.cs\2022-11-01_13_18_03_487.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
+  </ItemGroup>
+
+</Project>
