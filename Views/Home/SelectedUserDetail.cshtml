@@ -47,7 +47,6 @@
 
             <input id="amount" type="number" class="form-control" name="amount" required>
             <p id="jsontext" class="text-danger"></p>
-            <strong  id="successtransfer" style="color: #0008ff"></strong>
             <br>
             <div class="text-center">
                 <button class="btn mt-3" name="submit" type="submit" id="transfer" >Transfer</button>
@@ -91,7 +90,7 @@
                 }
                 else {
                 
-                document.getElementById("successtransfer").innerHTML = data;
+                window.location.href = '@Url.Action("Customers", "Home")';
 
               }
 
