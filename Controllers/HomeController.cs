@@ -134,7 +134,7 @@ namespace Basic_Banking_System.Controllers
 
                 db.SaveChanges();
 
-                return Json("The money has been transferred successfully");
+                return Json("");
              
             }
             catch (Exception ex)
